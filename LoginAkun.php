@@ -66,13 +66,13 @@ if (isset($_POST["login"])) {
         }
 
         .login-image {
-            width: 100%;
+            width: 95%;
             height: 500px;
             object-fit: cover;
         }
 
         .btn-submit,
-        .btn-create {
+        .btn-buat {
             transition: 0.3s;
         }
 
@@ -81,7 +81,7 @@ if (isset($_POST["login"])) {
             transform: scale(1.03);
         }
 
-        .btn-create:hover {
+        .btn-buat:hover {
             color: #000;
             font-weight: bold;
         }
@@ -105,11 +105,11 @@ if (isset($_POST["login"])) {
                     <input type="password" class="form-control" name="password" id="password" required />
                 </div>
                 <div class="mb-3">
-                    <button type="submit" name="login" class="btn btn-primary w-100 btn-submit">Log In</button>
+                    <button type="submit" name="login" class="btn-submit btn btn-primary w-100">Log In</button>
                 </div>
                 <div class="text-center mt-3">
                     Tidak Memiliki Akun?
-                    <a href="CreateAkun.php" class="text-decoration-none text-danger btn-create">Buat Akun</a>
+                    <a href="CreateAkun.php" class="btn-buat text-danger">Buat Akun</a>
                 </div>
             </form>
             <div class="col-md-6 border-start border-dark-subtle">
