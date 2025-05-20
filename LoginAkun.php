@@ -1,39 +1,24 @@
 <?php
 include "KoneksiDatabase.php";
-session_start();
 
-if (isset($_COOKIE['id']) && isset($_COOKIE['username'])) {
-    $id = $_COOKIE['id'];
-    $username = $_COOKIE['username'];
-
-    $result = mysqli_query($conn, "SELECT username FROM users WHERE id = '$id'");
-    $row = mysqli_fetch_assoc($result);
-
-    if ($username === hash('sha256', $row['username'])) {
-        $_SESSION['login'] = true;
-    }
-}
-
-if (isset($_POST["login"])) {
-    $username = $_POST["username"];
+if (isset($_POST["register"])) {
+    $username = strtolower($_POST["username"]);
     $password = $_POST["password"];
+    $password2 = $_POST["password2"];
 
-    $result = mysqli_query($conn, "SELECT * FROM account WHERE username = '$username'");
+    if ($password != $password2) {
+        echo "<script>alert('Input password tidak sesuai');</script>";
+    } else {
+        $password = password_hash($password, PASSWORD_DEFAULT);
+        $query = "INSERT INTO account (username, password) VALUES ('$username', '$password')";
+        $q = mysqli_query($conn, $query);
 
-    if (mysqli_num_rows($result) == 1) {
-        $row = mysqli_fetch_assoc($result);
-
-        if (password_verify($password, $row["password"])) {
-            $_SESSION["login"] = true;
-
-            if (isset($_POST['remember'])) {
-                setcookie('id', $row['id'], time() + 60 * 60);
-                setcookie('username', hash('sha256', $row['username']), time() + 60 * 60);
-            }
-            header("Location: Homepage.php");
+        if ($q) {
+            echo "<script>alert('User berhasil ditambahkan');</script>";
+            header("Location: LoginAkun.php");
             exit;
         } else {
-            echo "<script>alert('input password tidak sesuai')</script>";
+            echo "<script>alert('User gagal ditambahkan');</script>";
         }
     }
 }
@@ -44,11 +29,11 @@ if (isset($_POST["login"])) {
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Login Akun</title>
+    <title>Daftar Akun</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
     <style>
         body {
-            background: linear-gradient(to left, rgb(35, 53, 216), rgb(81, 119, 224), rgb(255, 255, 255));
+            background: linear-gradient(to top, rgb(35, 53, 216), rgb(81, 119, 224), rgb(255, 255, 255));
             height: 100vh;
             display: flex;
             align-items: center;
@@ -61,18 +46,18 @@ if (isset($_POST["login"])) {
             margin-top: 40px;
         }
 
-        .form-section {
-            padding: 40px 30px 30px;
-        }
-
-        .login-image {
-            width: 95%;
+        .register-image {
+            width: 100%;
             height: 500px;
             object-fit: cover;
         }
 
+        .form-section {
+            padding: 60px 30px 30px;
+        }
+
         .btn-submit,
-        .btn-buat {
+        .btn-kembali {
             transition: 0.3s;
         }
 
@@ -81,7 +66,7 @@ if (isset($_POST["login"])) {
             transform: scale(1.03);
         }
 
-        .btn-buat:hover {
+        .btn-kembali:hover {
             color: #000;
             font-weight: bold;
         }
@@ -90,12 +75,13 @@ if (isset($_POST["login"])) {
 <body>
     <div class="container-fluid d-flex justify-content-center">
         <div class="card shadow bg-body-tertiary d-flex flex-md-row flex-column card-custom">
+            <div class="col-md-6 position-relative border-end">
+                <img src="LogoWeb.png" class="position-absolute" style="top: 20px; left: 20px; width: 100px; height: 100px;" alt="Logo" />
+                <img src="DesainLogin.jpeg" class="register-image" alt="Register" />
+            </div>
+
             <form action="" method="POST" class="col-md-6 form-section">
-                <h4 class="text-info-emphasis mb-3">
-                    <img src="LogoWeb.png" style="width: 100px; height: 100px;" alt="Logo" />
-                    AppleTalk
-                </h4>
-                <h3 class="text-center text-info-emphasis mb-3">Sign In</h3>
+                <h3 class="text-center mb-3">BUAT AKUN</h3>
                 <div class="mb-3">
                     <label for="username" class="form-label">Username</label>
                     <input type="text" class="form-control" name="username" id="username" required />
@@ -105,16 +91,16 @@ if (isset($_POST["login"])) {
                     <input type="password" class="form-control" name="password" id="password" required />
                 </div>
                 <div class="mb-3">
-                    <button type="submit" name="login" class="btn-submit btn btn-primary w-100">Log In</button>
+                    <label for="password2" class="form-label">Konfirmasi Password</label>
+                    <input type="text" class="form-control" name="password2" id="password2" required />
                 </div>
-                <div class="text-center mt-3">
-                    Tidak Memiliki Akun?
-                    <a href="CreateAkun.php" class="btn-buat text-danger">Buat Akun</a>
+                <div class="mb-3">
+                    <button type="submit" name="register" class="btn-submit btn btn-primary w-100">Sign Up</button>
+                </div>
+                <div class="text-center">
+                    <a href="LoginAkun.php" class="btn-kembali text-secondary">Kembali</a>
                 </div>
             </form>
-            <div class="col-md-6 border-start border-dark-subtle">
-                <img src="DesainRegister.jpeg" class="login-image" alt="Login" />
-            </div>
         </div>
     </div>
 </body>
