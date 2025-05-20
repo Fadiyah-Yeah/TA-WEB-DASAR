@@ -57,7 +57,7 @@ if (isset($_POST["register"])) {
         }
 
         .btn-submit,
-        .btn-back {
+        .btn-kembali {
             transition: 0.3s;
         }
 
@@ -66,7 +66,7 @@ if (isset($_POST["register"])) {
             transform: scale(1.03);
         }
 
-        .btn-back:hover {
+        .btn-kembali:hover {
             color: #000;
             font-weight: bold;
         }
@@ -81,7 +81,7 @@ if (isset($_POST["register"])) {
             </div>
 
             <form action="" method="POST" class="col-md-6 form-section">
-                <h3 class="text-center mb-3">BUAT AKUN</h3>
+                <h3 class="text-center mb-3">Sign Up</h3>
                 <div class="mb-3">
                     <label for="username" class="form-label">Username</label>
                     <input type="text" class="form-control" name="username" id="username" required />
@@ -95,10 +95,10 @@ if (isset($_POST["register"])) {
                     <input type="text" class="form-control" name="password2" id="password2" required />
                 </div>
                 <div class="mb-3">
-                    <button type="submit" name="register" class="btn btn-primary w-100 btn-submit">Sign Up</button>
+                    <button type="submit" name="register" class="btn-submit btn btn-primary w-100">Sign Up</button>
                 </div>
                 <div class="text-center">
-                    <a href="LoginAkun.php" class="text-decoration-none text-secondary btn-back">Kembali</a>
+                    <a href="LoginAkun.php" class="btn-kembali text-secondary">Kembali</a>
                 </div>
             </form>
         </div>
