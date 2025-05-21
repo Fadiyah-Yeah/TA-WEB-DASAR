@@ -5,17 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Fabulous Store</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
   <style>
-    /* Top promo bar */
-    /* .promo-bar {
-      background: #111;
-      color: white;
-      text-align: center;
-      font-size: 0.9rem;
-      padding: 5px 0;
-      font-weight: 500;
-    } */
-    /* Navbar styles */
     .navbar {
       padding: 1rem 2rem;
       background-color: #042440;
@@ -58,20 +49,23 @@
     } */
     /* Hero Section */
     .hero-section {
-      background: #fef6f6;
+      background: #2F4156;
       padding: 60px 0;
+      color: white;
     }
     .hero-section .btn-shop {
-      background: #c44141;
+      background: #567C8D;
       border: none;
       padding: 10px 25px;
       color: white;
       font-weight: 600;
       border-radius: 30px;
       transition: background 0.3s ease;
+      color: white;
     }
     .hero-section .btn-shop:hover {
-      background: #8e2c2c;
+      background: #C8D9E6;
+      color: white;
     }
     /* Watch Product circles */
     .watch-product .circle {
@@ -100,6 +94,10 @@
     .fabulous-products .card:hover {
       transform: translateY(-5px);
       box-shadow: 0 8px 20px rgb(0 0 0 / 0.15);
+    }
+    .fabulous-products{
+     background: #2F4156;
+     Color: white;
     }
     .label-sale, .label-new {
       position: absolute;
@@ -132,7 +130,7 @@
         display: block;
     }
     .btn-shop {
-        background-color: #bf5151;
+        background-color: #567C8D;
         color: white;
         border: none;
         padding: 12px 30px;
@@ -146,7 +144,7 @@
         text-align: center;
     }
     .btn-shop:hover {
-        background-color: #a34141;
+        background-color: #C8D9E6;
     }
     .btn-expand {
         width: 100% !important;
@@ -184,41 +182,12 @@
 </head>
 <body>
 
-  <!-- Top promo bar -->
-  <!-- <div class="promo-bar">
-    UP TO 50% OFF THE ENTIRE STORE! MADE WITH ELECTRONIC BY <b>FABULOUS</b> STORE!
-  </div> -->
-
-  <!-- Navbar -->
-  <!-- <nav class="navbar navbar-expand-lg bg-white shadow-sm">
-    <div class="container">
-      <a class="navbar-brand" href="#">Fabulous</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navMenu">
-        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-          <li class="nav-item"><a class="nav-link" href="#">Drink</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">Accessories</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">Collection</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">Include Page</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">About Us</a></li>
-        </ul>
-        <ul class="navbar-nav ms-3 mb-2 mb-lg-0">
-          <li class="nav-item"><a class="nav-link" href="#"><i class="bi bi-search"></i></a></li>
-          <li class="nav-item"><a class="nav-link" href="#"><i class="bi bi-person"></i></a></li>
-          <li class="nav-item"><a class="nav-link" href="#"><i class="bi bi-cart"></i></a></li>
-        </ul>
-      </div>
-    </div>
-  </nav> -->
-
   <!-- Navbar -->
   <nav class="navbar navbar-expand-lg">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">
         <img src="https://getbootstrap.com/docs/5.3/assets/brand/bootstrap-logo.svg" alt="Logo" width="30" height="24">
-        Bootstrap
+        AppleTalk
       </a>
       <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
         <span class="navbar-toggler-icon"></span>
@@ -228,7 +197,7 @@
           <li class="nav-item"><a class="nav-link" href="Home.php">Home</a></li>
           <li class="nav-item"><a class="nav-link" href="Beranda.php">Produk</a></li>
           <li class="nav-item"><a class="nav-link" href="#">Blog</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="Home.php#hal4">About</a></li>
         </ul>
         <ul class="navbar-nav ms-auto">
           <li class="nav-item">
@@ -246,12 +215,12 @@
         <img src="https://i.ibb.co/b1Dfzmr/lemon-soda.png" alt="Fresh Lemon Soda" class="img-fluid" />
       </div>
       <div class="col-md-6 ps-md-5">
-        <h6 class="text-muted">Lemon Test In Town</h6>
+        <h6 class="text">Lemon Test In Town</h6>
         <h1 class="fw-bold">Fresh Lemon Soda</h1>
-        <p class="mb-4 text-muted">
+        <p class="mb-4">
           Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print, graphic or web designs. The passage is attributed to an unknown typesetter in the 15th century.
         </p>
-        <button class="btn btn-shop">Shop Now</button>
+        <a href="Review.php"><button class="btn btn-shop">START NOW</button></a>
       </div>
     </div>
   </section>
@@ -263,27 +232,27 @@
       <h2 class="mb-4 fw-bold">Watch Product</h2>
       <div class="d-flex justify-content-center align-items-center gap-3 flex-wrap">
         <div class="circle bg-primary text-white" title="Blueberry">
-          <img src="https://i.ibb.co/wKQhCb3/blueberry-can.png" alt="Blueberry" class="img-fluid" style="max-width: 60px;">
+          <a href="Review.php"><img src="https://i.ibb.co/wKQhCb3/blueberry-can.png" alt="Blueberry" class="img-fluid" style="max-width: 60px;"></a>
           <div>iPhone</div>
         </div>
         <div class="circle bg-danger text-white" title="Cranberry">
-          <img src="https://i.ibb.co/GRW9mYm/cranberry-can.png" alt="Cranberry" class="img-fluid" style="max-width: 60px;">
+          <a href=""><img src="https://i.ibb.co/GRW9mYm/cranberry-can.png" alt="Cranberry" class="img-fluid" style="max-width: 60px;"></a>
           <div>Macbook</div>
         </div>
         <div class="circle bg-info text-white" title="Rose White">
-          <img src="https://i.ibb.co/3CyB6R1/rosewhite-can.png" alt="Rose White" class="img-fluid" style="max-width: 60px;">
+          <a href=""><img src="https://i.ibb.co/3CyB6R1/rosewhite-can.png" alt="Rose White" class="img-fluid" style="max-width: 60px;"></a>
           <div>iPad</div>
         </div>
         <div class="circle bg-warning text-white" title="Spice Mango">
-          <img src="https://i.ibb.co/n0F1gZ3/spicemango-can.png" alt="Spice Mango" class="img-fluid" style="max-width: 60px;">
+          <a href="Watch.php"><img src="https://i.ibb.co/n0F1gZ3/spicemango-can.png" alt="Spice Mango" class="img-fluid" style="max-width: 60px;"></a>
           <div>Watch</div>
         </div>
         <div class="circle bg-danger text-white" title="Changer">
-          <img src="https://i.ibb.co/GRW9mYm/cranberry-can.png" alt="Changer" class="img-fluid" style="max-width: 60px;">
+          <a href="Airpods.php"><img src="https://i.ibb.co/GRW9mYm/cranberry-can.png" alt="Changer" class="img-fluid" style="max-width: 60px;"></a>
           <div>Airpods</div>
         </div>
         <div class="circle bg-danger text-white" title="Changer">
-          <img src="https://i.ibb.co/GRW9mYm/cranberry-can.png" alt="Changer" class="img-fluid" style="max-width: 60px;">
+          <a href="TV.php"><img src="https://i.ibb.co/GRW9mYm/cranberry-can.png" alt="Changer" class="img-fluid" style="max-width: 60px;"></a>
           <div>TV & Home</div>
         </div>
       </div>
@@ -291,7 +260,7 @@
   </section>
 
   <!-- Fabulous Products -->
-  <section class="fabulous-products py-5 bg-light">
+  <section class="fabulous-products py-5">
     <div class="container">
       <p class="text-uppercase text-muted mb-2">The Latest</p>
       <h2 class="mb-4 fw-bold">Fabulous Products</h2>
