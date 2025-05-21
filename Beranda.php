@@ -359,17 +359,29 @@
       </div>
     </div>
   </section>
-   <!-- Footer -->
-  <footer class="bg-dark text-white text-center py-3">
-    <div class="container">
+  <!-- Footer -->
+<footer class="bg-dark text-white py-3">
+  <div class="container footer-social">
+    <div>
       <p>&copy; 2023 Your Company. All rights reserved.</p>
-      <p>Follow us on:
-        <a href="#" class="text-white">Facebook</a>,
-        <a href="#" class="text-white">Twitter</a>,
-        <a href="#" class="text-white">Instagram</a>
-      </p>
     </div>
-  </footer>
+    <div class="footer-right">
+      <p class="fw-bold mb-1">Follow us:</p>
+      <div class="d-flex gap-4">
+        <div class="social-column">
+          <span>Creator 1</span>
+          <a href="#"><i class="bi bi-instagram"></i> Instagram</a>
+          <a href="#"><i class="bi bi-github"></i> GitHub</a>
+        </div>
+        <div class="social-column">
+          <span>Creator 2</span>
+          <a href="#"><i class="bi bi-instagram"></i> Instagram</a>
+          <a href="#"><i class="bi bi-github"></i> GitHub</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
 
   <!-- Script Bootstrap & AOS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"></script>
