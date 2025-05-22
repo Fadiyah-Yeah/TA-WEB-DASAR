@@ -1,15 +1,27 @@
+<?php
+include 'KoneksiDatabase.php';
+session_start();
+//!true = false;
+//!false = true;
+if (!isset($_SESSION["login"])) {
+  header("Location: LoginAkun.php");
+  exit;
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Fabulous Store</title>
+  <title>Beranda</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
   <style>
+    /* Navbar styles */
     .navbar {
-      padding: 1rem 2rem;
-      background-color: #042440;
+      padding: 10px;
+      background-color: #2F4156;
       position: fixed;
       top: 0;
       left: 0;
@@ -17,89 +29,90 @@
       z-index: 1000;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
+
     .navbar-brand {
       font-weight: bold;
       font-size: 1.6rem;
     }
-     /* .navbar {
-      background-color: #042440;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      z-index: 1000;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    } */
+
     .navbar .nav-link,
     .navbar .navbar-brand {
       color: white;
     }
+
     .navbar .nav-link:hover,
     .navbar .navbar-brand:hover {
-      color: #ffc107;
+      color: rgb(219, 172, 31);
     }
+
     body {
-      padding-top: 70px;
+      padding-top: 60px;
     }
-    /* .dropdown-menu {
-      background-color: #042440;
-    }
-    .dropdown-item {
-      color: white;
-    } */
-    /* Hero Section */
-    .hero-section {
-      background: #2F4156;
+
+    /* Beranda Section */
+    .Beranda-section {
+      background: linear-gradient(to top, #F5EFEB, #C8D9E6);
       padding: 60px 0;
-      color: white;
+      width: 100%;
+      height: 900px;
     }
-    .hero-section .btn-shop {
+
+    .Beranda-section .btn-shop {
       background: #567C8D;
       border: none;
       padding: 10px 25px;
       color: white;
       font-weight: 600;
       border-radius: 30px;
-      transition: background 0.3s ease;
-      color: white;
+      transition: background 0.5s ease;
     }
-    .hero-section .btn-shop:hover {
-      background: #C8D9E6;
-      color: white;
+
+    .Beranda-section .btn-shop:hover {
+      background: #2F4156;
     }
-    /* Watch Product circles */
+
+    /* Watch Product */
+    .watch-product {
+      height: 900px;
+      background: linear-gradient(to top, #FFFFFF, #F5EFEB);
+      width: 100%;
+    }
+
     .watch-product .circle {
-      width: 100px;
-      height: 100px;
+      width: 140px;
+      height: 140px;
       border-radius: 50%;
-      background: #eee;
+      position: relative;
       display: flex;
       align-items: center;
       justify-content: center;
       box-shadow: 2px 2px 8px rgb(0 0 0 / 0.1);
-      cursor: pointer;
       margin: 0 10px;
       transition: transform 0.3s ease;
     }
+
     .watch-product .circle:hover {
       transform: scale(1.1);
       box-shadow: 2px 2px 15px rgb(0 0 0 / 0.3);
     }
-    /* Fabulous Products cards */
-    .fabulous-products .card {
+
+    /* News cards */
+    .News {
+      background: linear-gradient(to bottom, #FFFFFF, #F5EFEB, #C8D9E6);
+    }
+    .News .card {
       border: none;
       box-shadow: 0 4px 8px rgb(0 0 0 / 0.1);
       transition: transform 0.3s ease;
     }
-    .fabulous-products .card:hover {
+
+    .News .card:hover {
       transform: translateY(-5px);
       box-shadow: 0 8px 20px rgb(0 0 0 / 0.15);
     }
-    .fabulous-products{
-     background: #2F4156;
-     Color: white;
-    }
-    .label-sale, .label-new {
+
+    .label-sale,
+    .label-new {
       position: absolute;
       top: 10px;
       left: 10px;
@@ -109,84 +122,106 @@
       border-radius: 20px;
       color: white;
     }
+
     .label-sale {
       background: #c44141;
     }
+
     .label-new {
       background: #41c455;
     }
-      .cards-wrapper .card:nth-child(n+5) {
-        display: none;
-    }
-    /* Show all cards when container has show-all */
-    .cards-wrapper.show-all .card {
-        display: block;
-    }
-     .cards-wrapper .card:nth-child(n+5) {
-        display: none;
-    }
-    /* Show all cards when container has show-all */
-    .cards-wrapper.show-all .card {
-        display: block;
-    }
+
     .btn-shop {
-        background-color: #567C8D;
-        color: white;
-        border: none;
-        padding: 12px 30px;
-        font-weight: 600;
-        border-radius: 10px;
-        cursor: pointer;
-        transition: background-color 0.3s ease;
-        display: block;
-        margin: 40px auto 20px auto;
-        width: 150px;
-        text-align: center;
+      background: #567C8D;
+      color: white;
+      border: none;
+      padding: 12px 30px;
+      font-weight: 600;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      display: block;
+      margin: 40px auto 20px auto;
+      width: 150px;
+      text-align: center;
     }
+
     .btn-shop:hover {
-        background-color: #C8D9E6;
+      transform: scale(1.1);
+      background-color: #2F4156;
+      color: white;
     }
+
     .btn-expand {
-        width: 100% !important;
-        transition: width 0.4s ease;
+      width: 100% !important;
+      transition: width 0.4s ease;
     }
-    
-    /* About Section */
-    .about-section {
+
+    /* Produk Section */
+    .produk-section {
+      height: 900px;
       padding: 60px 0;
+      background: linear-gradient(to left, #F5EFEB, #C8D9E6, #567C8D);
     }
-    .about-section img {
+
+    .produk-section table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 2rem;
+    }
+
+    .produk-section table th,
+    .produk-section table td {
+      padding: 12px 15px;
+      border-bottom: 1px solid rgb(0, 0, 0);
+      text-align: left;
+      font-size: 1rem;
+      color: #1d1d1f;
+    }
+
+    .produk-section table th {
+      width: 30%;
+      font-weight: 600;
+      color: #3c3c4399;
+    }
+
+    .produk-section img {
       max-width: 100%;
-      border-radius: 12px;
-      box-shadow: 0 6px 20px rgb(0 0 0 / 0.1);
+      border-radius: 30px;
+      box-shadow: 0 10px 20px rgb(0 0 0 / 0.1);
     }
-     .aos-up {
-    opacity: 0;
-    transform: translateY(50px);
-    transition: all 1s ease;
-  }
-  .aos-up.aos-animate {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  .aos-down {
-    opacity: 0;
-    transform: translateY(-50px);
-    transition: all 1s ease;
-  }
-  .aos-down.aos-animate {
-    opacity: 1;
-    transform: translateY(0);
-  }
+
+    .aos-up {
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 1s ease;
+    }
+
+    .aos-up.aos-animate {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .aos-down {
+      opacity: 0;
+      transform: translateY(-50px);
+      transition: all 1s ease;
+    }
+
+    .aos-down.aos-animate {
+      opacity: 1;
+      transform: translateY(0);
+    }
   </style>
 </head>
+
 <body>
 
   <!-- Navbar -->
   <nav class="navbar navbar-expand-lg">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">
-        <img src="https://getbootstrap.com/docs/5.3/assets/brand/bootstrap-logo.svg" alt="Logo" width="30" height="24">
+        <img src="image/LogoWeb.png" alt="Logo" width="60px" height="60px">
         AppleTalk
       </a>
       <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
@@ -194,10 +229,10 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
-          <li class="nav-item"><a class="nav-link" href="Home.php">Home</a></li>
-          <li class="nav-item"><a class="nav-link" href="Beranda.php">Produk</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">Blog</a></li>
-          <li class="nav-item"><a class="nav-link" href="Home.php#hal4">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="Homepage.php">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="Produk.php">Produk</a></li>
+          <li class="nav-item"><a class="nav-link" href="Homepage.php #hal4">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="#hal3">Blog</a></li>
         </ul>
         <ul class="navbar-nav ms-auto">
           <li class="nav-item">
@@ -208,223 +243,259 @@
     </div>
   </nav>
 
-  <!-- Hero Section -->
-  <section class="hero-section">
-    <div class="container d-flex flex-wrap align-items-center justify-content-center">
+  <!-- Beranda Section -->
+  <section id="hal1" class="Beranda-section border-bottom border-secondary border-5">
+    <div class="container d-flex flex-wrap align-items-center justify-content-center" style="margin-top: 185px;">
       <div class="col-md-5 text-center text-md-start">
-        <img src="https://i.ibb.co/b1Dfzmr/lemon-soda.png" alt="Fresh Lemon Soda" class="img-fluid" />
+        <img src="image/Beranda.jpeg" alt="Iphone" style="width: 400px; height: 400px; border-radius:30px; box-shadow: 0 20px 36px rgb(0 0 0 / 0.1)" class="img-fluid" />
       </div>
       <div class="col-md-6 ps-md-5">
-        <h6 class="text">Lemon Test In Town</h6>
-        <h1 class="fw-bold">Fresh Lemon Soda</h1>
-        <p class="mb-4">
-          Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print, graphic or web designs. The passage is attributed to an unknown typesetter in the 15th century.
-        </p>
-        <a href="Review.php"><button class="btn btn-shop">START NOW</button></a>
+        <h2 class="text-muted">Apple</h4>
+          <h1 class="fw-bold mb-4">Inovasi yang Menginspirasi Dunia</h1>
+          <h5 class="text-secondary"> Apple adalah salah satu brand teknologi paling berpengaruh dan ikonik di dunia. Dikenal karena desain elegan, performa tinggi, dan integrasi ekosistem yang mulus, Apple telah membangun reputasi kuat sebagai pelopor dalam inovasi digital.</h5>
+          <a href="https://www.apple.com/id/iphone/" class="text-decoration-none"><button class="btn btn-shop">Shop Now</button></a>
       </div>
     </div>
   </section>
 
   <!-- Watch Product -->
-  <section class="watch-product py-5 text-center">
+  <section id="hal2" class="watch-product py-5 text-center border-bottom border-secondary border-5">
     <div class="container">
-      <p class="text-uppercase text-muted mb-2">The Products</p>
-      <h2 class="mb-4 fw-bold">Watch Product</h2>
-      <div class="d-flex justify-content-center align-items-center gap-3 flex-wrap">
-        <div class="circle bg-primary text-white" title="Blueberry">
-          <a href="Review.php"><img src="https://i.ibb.co/wKQhCb3/blueberry-can.png" alt="Blueberry" class="img-fluid" style="max-width: 60px;"></a>
-          <div>iPhone</div>
-        </div>
-        <div class="circle bg-danger text-white" title="Cranberry">
-          <a href=""><img src="https://i.ibb.co/GRW9mYm/cranberry-can.png" alt="Cranberry" class="img-fluid" style="max-width: 60px;"></a>
-          <div>Macbook</div>
-        </div>
-        <div class="circle bg-info text-white" title="Rose White">
-          <a href=""><img src="https://i.ibb.co/3CyB6R1/rosewhite-can.png" alt="Rose White" class="img-fluid" style="max-width: 60px;"></a>
-          <div>iPad</div>
-        </div>
-        <div class="circle bg-warning text-white" title="Spice Mango">
-          <a href="Watch.php"><img src="https://i.ibb.co/n0F1gZ3/spicemango-can.png" alt="Spice Mango" class="img-fluid" style="max-width: 60px;"></a>
-          <div>Watch</div>
-        </div>
-        <div class="circle bg-danger text-white" title="Changer">
-          <a href="Airpods.php"><img src="https://i.ibb.co/GRW9mYm/cranberry-can.png" alt="Changer" class="img-fluid" style="max-width: 60px;"></a>
-          <div>Airpods</div>
-        </div>
-        <div class="circle bg-danger text-white" title="Changer">
-          <a href="TV.php"><img src="https://i.ibb.co/GRW9mYm/cranberry-can.png" alt="Changer" class="img-fluid" style="max-width: 60px;"></a>
-          <div>TV & Home</div>
-        </div>
+      <h3 class="text-uppercase fw-bold " style="margin-bottom: 40px;">Kategori Produk</h3>
+      <h2 class="text-muted" style="margin-bottom: 40px;">Beragam Produk Tersedia</h2>
+      <div class="d-flex justify-content-center align-items-center flex-wrap" style="gap: 80px;">
+        <a href="#Produk Iphone 16 Pro" class="text-decoration-none">
+          <div class="circle text-white" style="background-color: rgba(24, 105, 158, 0.86);">
+            <h5 class="text-center ">
+              Iphone
+            </h5>
+          </div>
+        </a>
+        <a href="#Produk Iphone 16 Pro" class="text-decoration-none">
+          <div class="circle text-white" style="background-color: rgb(49, 140, 163);">
+            <h5 class="text-center ">
+              Macbook
+            </h5>
+          </div>
+        </a>
+        <a href="#Produk Iphone 16 Pro" class="text-decoration-none">
+          <div class="circle text-white" style="background-color: rgb(18, 183, 224);">
+            <h5 class="text-center ">
+              IPad
+            </h5>
+          </div>
+        </a>
+      </div>
+      <div class="d-flex justify-content-center align-items-center flex-wrap" style="gap: 80px; padding-top: 80px;">
+        <a href="#Produk Iphone 16 Pro" class="text-decoration-none">
+          <div class="circle text-white" style="background-color: rgba(51, 170, 179, 0.86);">
+            <h5 class="text-center ">
+              Iphone 16 Pro
+            </h5>
+          </div>
+        </a>
+        <a href="#Produk Iphone 16 Pro" class="text-decoration-none">
+          <div class="circle text-white" style="background-color: rgb(49, 163, 138);">
+            <h5 class="text-center ">
+              Iphone 15 Plus
+            </h5>
+          </div>
+        </a>
+        <a href="#Produk Iphone 16 Pro" class="text-decoration-none">
+          <div class="circle text-white" style="background-color: rgb(102, 99, 238);">
+            <h5 class="text-center ">
+              Iphone 16 e
+            </h5>
+          </div>
+        </a>
+        <h5 class="text-secondary">Bagi banyak orang, Apple bukan sekadar merek — tapi simbol keandalan, kreativitas, dan kemajuan teknologi.</h5>
       </div>
     </div>
   </section>
 
-  <!-- Fabulous Products -->
-  <section class="fabulous-products py-5">
+  <!-- News -->
+  <section id="hal3" class="News py-5">
     <div class="container">
-      <p class="text-uppercase text-muted mb-2">The Latest</p>
-      <h2 class="mb-4 fw-bold">Fabulous Products</h2>
+      <h1 class="text-uppercase text-muted mb-2">Blog</h1>
+      <h2 class="mb-4 fw-bold">Berita Terkini</h2>
       <div class="row g-4">
         <!-- Product Card -->
         <div class="col-md-4 col-lg-3 position-relative">
-          <div class="card">
-            <span class="label-sale">Top</span>
-            <img src="https://i.ibb.co/6NsZL0G/scotch-can.png" class="card-img-top" alt="Scotch" />
-            <div class="card-body text-center">
-              <h5 class="card-title">Scotch</h5>
-              <p class="card-text">$96.00</p>
+          <a href="https://www.apple.com/id/newsroom/2025/03/iphone-16-lineup-available-from-11-April/" class="text-decoration-none">
+            <div class="card">
+              <span class="label-sale">Top</span>
+              <img src="image/BeritaIphone16.jpg" class="card-img-top" alt="Scotch" />
+              <div class="card-body text-center">
+                <h5 class="card-title">Apple Product</h5>
+                <p class="card-text">Jajaran iPhone 16 akan tersedia mulai 11 April!</p>
+              </div>
+              <p class="card-text p-2">26 Maret 2025</p>
             </div>
-          </div>
+          </a>
         </div>
         <div class="col-md-4 col-lg-3 position-relative">
-          <div class="card">
-            <span class="label-new">New</span>
-            <img src="https://i.ibb.co/BTXct1L/spritz-can.png" class="card-img-top" alt="Spritz" />
-            <div class="card-body text-center">
-              <h5 class="card-title">Spritz</h5>
-              <p class="card-text"><del>$65.00</del> <strong>$50.00</strong></p>
+          <a href="https://www.apple.com/id/newsroom/2025/04/apple-surpasses-60-percent-reduction-in-global-greenhouse-gas-emissions/" class="text-decoration-none">
+            <div class="card">
+              <span class="label-new">New</span>
+              <img src="image/BeritaEmisi.jpg" class="card-img-top" alt="Spritz" style="height: 172px;" />
+              <div class="card-body text-center">
+                <h5 class="card-title">Apple Inovation</h5>
+                <p class="card-text">Apple menunjukkan kemajuan dalam bidang lingkungan!</p>
+              </div>
+              <p class="card-text p-2">16 April 2025</p>
             </div>
-          </div>
+          </a>
         </div>
         <div class="col-md-4 col-lg-3 position-relative">
-          <div class="card">
-            <span class="label-new">New</span>
-            <img src="https://i.ibb.co/xHGR2RD/manhatten-can.png" class="card-img-top" alt="Manhatten" />
-            <div class="card-body text-center">
-              <h5 class="card-title">Manhatten</h5>
-              <p class="card-text"><del>$110.00</del> <strong>$90.00</strong></p>
+          <a href="https://www.apple.com/id/newsroom/2025/04/what-the-clash-joins-apple-arcade-in-may-among-five-new-games/" class="text-decoration-none">
+            <div class="card">
+              <span class="label-new">New</span>
+              <img src="image/BeritaGame.jpg" class="card-img-top" alt="Manhatten" />
+              <div class="card-body text-center">
+                <h5 class="card-title">Apple Arcade</h5>
+                <p class="card-text">Lima game baru hadir di Apple Arcade pada bulan Mei!</p>
+              </div>
+              <p class="card-text p-2">8 April 2025</p>
             </div>
-          </div>
+          </a>
         </div>
         <div class="col-md-4 col-lg-3 position-relative">
-          <div class="card">
-            <span class="label-new">New</span>
-            <img src="https://i.ibb.co/GFPZ3Hq/french75-can.png" class="card-img-top" alt="French 75" />
-            <div class="card-body text-center">
-              <h5 class="card-title">French 75</h5>
-              <p class="card-text"><del>$75.00</del> <strong>$50.00</strong></p>
+          <a href="https://www.apple.com/id/newsroom/2025/05/universal-music-group-and-apple-music-announce-sound-therapy/" class="text-decoration-none">
+            <div class="card">
+              <span class="label-new">New</span>
+              <img src="image/BeritaSoundMusic.jpg" class="card-img-top" alt="French 75" />
+              <div class="card-body text-center">
+                <h5 class="card-title">Apple Inovation</h5>
+                <p class="card-text">UMG dan Apple Music mengumumkan Sound Therapy!</p>
+              </div>
+              <p class="card-text p-2">13 Mei 2025</p>
             </div>
-          </div>
-        </div>
-        <div class="col-md-4 col-lg-3 position-relative">
-          <div class="card">
-            <span class="label-new">New</span>
-            <img src="https://i.ibb.co/4gRxT6b/whiskey-sour-can.png" class="card-img-top" alt="Whiskey Sour" />
-            <div class="card-body text-center">
-              <h5 class="card-title">Whiskey Sour</h5>
-              <p class="card-text"><del>$45.00</del> <strong>$25.00</strong></p>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4 col-lg-3 position-relative">
-          <div class="card">
-            <span class="label-new">New</span>
-            <img src="https://i.ibb.co/jGmR6Wx/mojito-can.png" class="card-img-top" alt="Mojito" />
-            <div class="card-body text-center">
-              <h5 class="card-title">Mojito</h5>
-              <p class="card-text"><del>$25.00</del> <strong>$20.00</strong></p>
-            </div>
-          </div>
+          </a>
         </div>
       </div>
       <div class="text-center mt-4">
-        <button class="btn btn-shop px-4">View All</button>
+        <a href="https://www.apple.com/id/newsroom/" class="text-decoration-none"><button class="btn btn-shop px-4">View All</button></a>
       </div>
     </div>
   </section>
 
-  <!-- About Section -->
-  <section class="about-section">
+  <!-- Produk Section -->
+  <!-- <section id="Produk Iphone 16 Pro" class="produk-section" style="border-top: #2F4156; ">
     <div class="container d-flex flex-wrap align-items-center gap-5">
-      <div class="col-md-6">
-        <img src="https://i.ibb.co/7XqpbZm/hello-summer.png" alt="All About Fabulous" />
-      </div>
       <div class="col-md-5">
-        <p class="text-uppercase text-muted mb-2">The Products</p>
-        <h2 class="mb-4 fw-bold">All About Fabulous</h2>
-        <p class="mb-4 text-muted">
-          Lorem ipsum is simply dummy text of the printing and typesetting industry. Lorem ipsum has been the industry’s standard dummy text ever since the 1500s, to make a type specimen book.
-        </p>
-        <ul>
-          <li>blablabla</li>
-          <li>blablabla</li>
-          <li>blablabla</li>
-          <li>blablabla</li>
-          <li>blablabla</li>
-          <li>blablabla</li>
-          <li>blablabla</li>
-          <li>blablabla</li>
-        </ul>
+        <img src="ProdukIphone/iPhone.jpeg" alt="All About  style="width: 380px; height: 450px;" />
+      </div>
+      <div class="row col-md-5">
+        <h3 class=" text-muted mb-2">Spesifikasi</h3>
+        <h2 class="mb-4 fw-bold">Iphone 16 Pro</h2>
+        <table>
+          <tr>
+            <th>Display</th>
+            <td>Super Retina XDR OLED 6,27 inci</td>
+          </tr>
+          <tr>
+            <th>Prosesor</th>
+            <td>Chip Apple A18 Pro</td>
+          </tr>
+          <tr>
+            <th>Kamera</th>
+            <td>Kamera Fusion 48 MP (quad-pixel sensor generasi ke-2)</td>
+          </tr>
+          <tr>
+            <th>Prosesor</th>
+            <td>Chip Apple A18 Pro</td>
+          </tr>
+        </table>
+
+        <!-- … lainnya … -->
+  <!-- <h3 class=" text-muted mb-2">Fitur Lainnya</h3>
+        <div class="col-md-6">
+          <ul>
+            <li>blablabla</li>
+            <li>blablabla</li>
+            <li>blablabla</li>
+          </ul>
+        </div>
+        <div class="col-md-6">
+          <ul>
+            <li>blablabla</li>
+            <li>blablabla</li>
+            <li>blablabla</li>
+            <li>blablabla</li>
+          </ul>
+        </div>
         <button class="btn btn-shop mt-3">View More</button>
       </div>
     </div>
-  </section>
+  </section> -->
+
   <!-- Footer -->
-<footer class="bg-dark text-white py-3">
-  <div class="container footer-social">
-    <div>
-      <p>&copy; 2023 Your Company. All rights reserved.</p>
-    </div>
-    <div class="footer-right">
-      <p class="fw-bold mb-1">Follow us:</p>
-      <div class="d-flex gap-4">
-        <div class="social-column">
-          <span>Creator 1</span>
-          <a href="#"><i class="bi bi-instagram"></i> Instagram</a>
-          <a href="#"><i class="bi bi-github"></i> GitHub</a>
-        </div>
-        <div class="social-column">
-          <span>Creator 2</span>
-          <a href="#"><i class="bi bi-instagram"></i> Instagram</a>
-          <a href="#"><i class="bi bi-github"></i> GitHub</a>
+  <footer class="bg-dark text-white py-3">
+    <div class="container footer-social">
+      <div>
+        <p>&copy; 2023 Your Company. All rights reserved.</p>
+      </div>
+      <div class="footer-right">
+        <p class="fw-bold mb-1">Follow us:</p>
+        <div class="d-flex gap-4">
+          <div class="social-column">
+            <span>Creator 1</span>
+            <a href="https://www.instagram.com/shofa_azmy27?igsh=ZG55NjM1M3duYmJo"><i class="bi bi-instagram"></i>@shofa_azmy27</a>
+            <a href="https://github.com/Shofa-58"><i class="bi bi-github"></i> Shofa-58</a>
+          </div>
+          <div class="social-column">
+            <span>Creator 2</span>
+            <a href="#"><i class="bi bi-instagram"></i> Instagram</a>
+            <a href="#"><i class="bi bi-github"></i> GitHub</a>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</footer>
+  </footer>
 
   <!-- Script Bootstrap & AOS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-  
-<script>
-  let lastScrollTop = 0;
-  window.addEventListener('scroll', function () {
-    let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
-    const sections = document.querySelectorAll('section');
-    sections.forEach(section => {
-      if (section.getBoundingClientRect().top < window.innerHeight && section.getBoundingClientRect().bottom > 0) {
-        if (currentScroll > lastScrollTop) {
-          section.classList.add('aos-up');
-          section.classList.remove('aos-down');
-        } else {
-          section.classList.add('aos-down');
-          section.classList.remove('aos-up');
-        }
-        section.classList.add('aos-animate');
-      } else {
-        section.classList.remove('aos-animate');
-      }
-    });
-    lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
-  }, false);
-</script>
-<script>
-    function toggleViewAll() {
-        const container = document.getElementById('productCards');
-        const btn = document.getElementById('btnViewAll');
-        container.classList.toggle('show-all');
 
-        if (container.classList.contains('show-all')) {
-            btn.textContent = 'Collapse';
-            btn.classList.add('btn-expand');
+  <script>
+    let lastScrollTop = 0;
+    window.addEventListener('scroll', function() {
+      let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+      const sections = document.querySelectorAll('section');
+      sections.forEach(section => {
+        if (section.getBoundingClientRect().top < window.innerHeight && section.getBoundingClientRect().bottom > 0) {
+          if (currentScroll > lastScrollTop) {
+            section.classList.add('aos-up');
+            section.classList.remove('aos-down');
+          } else {
+            section.classList.add('aos-down');
+            section.classList.remove('aos-up');
+          }
+          section.classList.add('aos-animate');
         } else {
-            btn.textContent = 'View All';
-            btn.classList.remove('btn-expand');
+          section.classList.remove('aos-animate');
         }
+      });
+      lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+    }, false);
+  </script>
+  <script>
+    function toggleViewAll() {
+      const container = document.getElementById('productCards');
+      const btn = document.getElementById('btnViewAll');
+      container.classList.toggle('show-all');
+
+      if (container.classList.contains('show-all')) {
+        btn.textContent = 'Collapse';
+        btn.classList.add('btn-expand');
+      } else {
+        btn.textContent = 'View All';
+        btn.classList.remove('btn-expand');
+      }
     }
-</script>
+  </script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
 </body>
+
 </html>
