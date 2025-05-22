@@ -29,34 +29,14 @@
     body {
       padding-top: 70px;
       font-family: 'Segoe UI', sans-serif;
+       background-color: rgba(255, 255, 255, 0.2);
+      background: linear-gradient(-45deg, #2F4156, #567C8D, #C8D9E6, #F5EFEB, #FFFFFF);
+      justify-content: center;
+      align-items: center;
     }
     section {
       height: 100vh;
       padding: 60px 20px;
-    }
-    section.hal4{
-       background-color: rgba(255, 255, 255, 0.2);
-      background: linear-gradient(-180deg, #2F4156, #567C8D, #C8D9E6, #F5EFEB, #FFFFFF);
-      justify-content: center;
-      align-items: center;
-    }
-    section.hal3{
-        background-color: rgba(255, 255, 255, 0.2);
-      background: linear-gradient(360deg, #2F4156, #567C8D, #C8D9E6, #F5EFEB, #FFFFFF);
-      justify-content: center;
-      align-items: center;
-    }
-    section.hal2{
-      background-color: rgba(255, 255, 255, 0.2);
-      background: linear-gradient(225deg, #2F4156, #567C8D, #C8D9E6, #F5EFEB, #FFFFFF);
-      justify-content: center;
-      align-items: center;
-    }
-    section.hal1{
-      background-color: rgba(255, 255, 255, 0.2);
-      background: linear-gradient(-45deg, #2F4156, #567C8D, #C8D9E6, #F5EFEB, #FFFFFF);
-      justify-content: center;
-      align-items: center;
     }
     .card {
       margin-right: auto;
@@ -189,7 +169,7 @@
     <div class="row align-items-center">
       <div class="text-center col-12">
         <h1 class="text-lg"><b>WHAT WE DO</b></h1>
-       <h3>Kami menyediakan ulasan produk Apple yang informatif dan objektif, bersumber dari referensi terpercaya untuk membantu Anda dalam mengenal lebih jauh tentang produk-produk Apple.</h3>
+       <p>Kami menyediakan ulasan produk Apple yang informatif dan objektif, bersumber dari referensi terpercaya untuk membantu Anda dalam mengenal lebih jauh tentang produk-produk Apple.</p>
     </div>
   </div>
 </section>
@@ -229,7 +209,7 @@
 <!-- Halaman 4 -->
 <section id="hal4" class="hal4 text-black py-5" data-aos="fade-left">
   <div class="container">
-    <br><br>
+    <br><br><br>
     <h1 class="text-center">CREATOR</h1>
     <div class="row g-4 justify-content-center mt-4">
       <div class="col-12 col-md-5">
