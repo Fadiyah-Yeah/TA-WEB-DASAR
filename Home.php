@@ -165,43 +165,40 @@
 <!-- Halaman 2 -->
 <section id="hal2" class="hal2 text-black py-5" data-aos="fade-right">
   <div class="container">
-    <br><br>
     <div class="row align-items-center">
-      <div class="text-center col-12">
+      
+      <!-- Kolom Kiri: Tulisan -->
+      <div class="col-md-6 mb-4">
         <h1 class="text-lg"><b>WHAT WE DO</b></h1>
-       <p>Kami menyediakan ulasan produk Apple yang informatif dan objektif, bersumber dari referensi terpercaya untuk membantu Anda dalam mengenal lebih jauh tentang produk-produk Apple.</p>
-    </div>
-  </div>
-</section>
+        <h5>Kami menyediakan ulasan produk Apple yang informatif dan objektif, bersumber dari referensi terpercaya untuk membantu Anda dalam mengenal lebih jauh tentang produk-produk Apple.</h5>
+      </div>
 
-<!-- Halaman 3 -->
-<section id="hal3" class="hal3 py-5" data-aos="zoom-in">
-  <div class="container">
-    <h1 class="text-center mb-4">What We Post</h1>
-    <div class="row justify-content-center">
-      <div class="col-md-4 mb-4 d-flex justify-content-center">
-        <div class="card" style="width: 18rem;">
-          <img src="product.png" class="card-img-top" alt="Review">
-          <div class="card-body">
-            <h5 class="card-title">Review</h5>
-            <p class="card-text">Website kami berisi ulasan mendalam tentang berbagai produk dari brand Apple.</p>
-            <a href="#" class="btn btn-primary">See Reviews</a>
+      <!-- Kolom Kanan: Dua card sejajar -->
+      <div class="col-md-6">
+        <div class="row justify-content-center">
+          <div class="col-6 d-flex justify-content-center">
+            <div class="card" style="width: 14rem;">
+              <img src="product.png" class="card-img-top" alt="Review">
+              <div class="card-body">
+                <h5 class="card-title">Review</h5>
+                <p class="card-text">Ulasan mendalam tentang produk Apple.</p>
+                <a href="#" class="btn btn-primary btn-sm">See Reviews</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-6 d-flex justify-content-center">
+            <div class="card" style="width: 14rem;">
+              <img src="logo.png" class="card-img-top" alt="News">
+              <div class="card-body">
+                <h5 class="card-title">News</h5>
+                <p class="card-text">Update dan kabar terbaru Apple.</p>
+                <a href="#" class="btn btn-primary btn-sm">Read News</a>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-      <div class="col-md-4 mb-4 d-flex justify-content-center">
-        <div class="card" style="width: 18rem;">
-          <img src="logo.png" class="card-img-top" alt="News">
-          <div class="card-body">
-            <h5 class="card-title">News</h5>
-            <p class="card-text">Kami juga menyajikan kabar terbaru dan update mengenai produk-produk Apple.</p>
-            <a href="#" class="btn btn-primary">Read News</a>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="text-center mt-4">
-      <a href="#hal4" class="btn btn-primary">Learn More</a>
+
     </div>
   </div>
 </section>
@@ -209,7 +206,6 @@
 <!-- Halaman 4 -->
 <section id="hal4" class="hal4 text-black py-5" data-aos="fade-left">
   <div class="container">
-    <br><br><br>
     <h1 class="text-center">CREATOR</h1>
     <div class="row g-4 justify-content-center mt-4">
       <div class="col-12 col-md-5">
