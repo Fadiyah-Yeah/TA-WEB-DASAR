@@ -1,3 +1,34 @@
+<?php
+include "KoneksiDatabase.php";
+session_start();
+//!true = false;
+//!false = true;
+if (!isset($_SESSION["login"])) {
+  header("Location: LoginAkun.php");
+  exit;
+}
+// Ambil username dari LoginAkun
+$username = $_SESSION['username'];
+
+// Di deklarasi tiap page sesuai produk
+$produk = "iPhone 16 Pro";
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $komentar = $_POST["komentar"];
+
+    if (!empty($komentar)) {
+        $komentar = mysqli_real_escape_string($conn, $komentar);
+
+        $query = "INSERT INTO coment (username, produk, komentar) VALUES ('$username', '$produk', '$komentar')";
+        if(mysqli_query($conn, $query)){
+            echo "<script>alert('Komentar berhasil ditambahkan');</script>";
+            header("Location: ReviewProduk.php");
+        }
+    }
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -257,6 +288,7 @@
       color: #2F4156;
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
       transition: transform 0.2s ease;
+      text-align: justify;
     }
 
     .step:hover,
@@ -347,7 +379,7 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
           <li class="nav-item"><a class="nav-link" href="../home/Home.php">Home</a></li>
-          <li class="nav-item"><a class="nav-link" href="Beranda.php">Produk</a></li>
+          <li class="nav-item"><a class="nav-link" href="Beranda.php">Beranda</a></li>
           <li class="nav-item"><a class="nav-link" href="#">Blog</a></li>
           <li class="nav-item"><a class="nav-link" href="../home/Home.php#hal4">About</a></li>
         </ul>
@@ -456,38 +488,47 @@
 
     </section>
 
+    <?php
+    $query = mysqli_query($conn, "SELECT username, komentar FROM coment WHERE produk = '$produk' ORDER BY id DESC");
+    ?>
     <!-- Coment Section -->
     <section class="section" style="background: #f3f6fa;">
-    <h2 class="section-title text-center">User Reviews</h2>
-    <div class="grid mb-4">
-      <div class="card">
-        <h4>Andi</h4>
-        <p>"Aplikasi ini sangat membantu dan mudah digunakan. Desainnya juga menarik!"</p>
-        <p>⭐⭐⭐⭐⭐</p>
-      </div>
-      <div class="card">
-        <h4>Sinta</h4>
-        <p>"Fitur-fitur yang ditawarkan sangat lengkap untuk kebutuhan saya."</p>
-        <p>⭐⭐⭐⭐</p>
-      </div>
-      <div class="card">
-        <h4>Budi</h4>
-        <p>"Pengalaman saya cukup baik, walaupun masih ada sedikit bug."</p>
-        <p>⭐⭐⭐</p>
+    <h2 class="section-title text-center mb-4">User Reviews</h2>
+    <div class="container">
+  <div class="row justify-content-center g-4 mb-4">
+    <?php while ($row = mysqli_fetch_assoc($query)) { ?>
+  <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+    <div class="card p-3 shadow-sm h-100">
+      <h5 class="fw-bold"><?= htmlspecialchars($row["username"]) ?></h5>
+      <p class="mb-0"><?= nl2br(htmlspecialchars($row["komentar"])) ?></p>
+    </div>
+  </div>
+<?php } ?>
+  </div>
+    </div>
+
+
+
+
+            <!-- <?php 
+    while ($row = mysqli_fetch_assoc($query)) {
+    ?>
+      <div class="card " style="width:max-content;">
+        <h4><?= $row["username"] ?></h4>
+        <p><?= $row["komentar"] ?></p>
       </div>
     </div>
+    <?php
+    }
+    ?> -->
 
     <!-- Form Komentar -->
     <div class="container">
       <h4 class="text-center mb-3">Tinggalkan Komentar Anda</h4>
-      <form id="commentForm">
-        <div class="mb-3">
-          <label for="nama" class="form-label">Nama</label>
-          <input type="text" class="form-control" id="nama" required>
-        </div>
+      <form method="POST" action="">
         <div class="mb-3">
           <label for="komentar" class="form-label">Komentar</label>
-          <textarea class="form-control" id="komentar" rows="3" required></textarea>
+          <textarea name="komentar" class="form-control" id="komentar" rows="3" required></textarea>
         </div>
         <button type="submit" class="btn btn-primary">Kirim Komentar</button>
       </form>
