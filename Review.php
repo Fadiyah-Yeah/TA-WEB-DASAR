@@ -1,23 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Review Produk</title>
-      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Review Produk</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
   <script>
-function navigateToProduct(dropdown) {
-    const select = document.getElementById(dropdown);
-    const url = dropdown.value;
-    if (url) {
+    function navigateToProduct(dropdown) {
+      const select = document.getElementById(dropdown);
+      const url = dropdown.value;
+      if (url) {
         window.location.href = url;
+      }
     }
-}
-</script>
+  </script>
 
   <style>
-     .navbar {
+    .navbar {
       background-color: #042440;
       position: fixed;
       top: 0;
@@ -26,57 +28,111 @@ function navigateToProduct(dropdown) {
       z-index: 1000;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
+
     .navbar .nav-link,
     .navbar .navbar-brand {
       color: white;
     }
+
     .navbar .nav-link:hover,
     .navbar .navbar-brand:hover {
       color: #ffc107;
     }
+
     .dropdown-menu {
       background-color: #042440;
     }
+
     .dropdown-item {
       color: white;
     }
-     body {
-    padding-top: 70px;
+
+    body {
+      padding-top: 70px;
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
       background: #f9f9f9;
     }
+
     .hero {
       display: flex;
       align-items: center;
       justify-content: space-between;
       padding: 80px 10%;
-      background: radial-gradient(circle at top left, #fdfbfb, #ebedee);
+      background: linear-gradient(135deg, #ebf4f8, #dfe9f3);
+      border-radius: 0 0 40px 40px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
     }
+
     .hero-text h1 {
-      font-size: 48px;
-      margin: 0;
+      font-size: 52px;
+      font-weight: 800;
+      color: #042440;
+      margin-bottom: 20px;
+      transition: 0.3s ease-in-out;
     }
+
+    .hero-text h1:hover {
+      color: #007bff;
+    }
+
     .hero-text p {
+      font-size: 22px;
+      color: #333;
+      margin-top: 10px;
+    }
+
+    .hero .dropdown-toggle {
+      color: #042440;
       font-size: 24px;
-      color: #777;
+      font-weight: 600;
+      background-color: transparent;
+      border: none;
+      padding: 0;
     }
+
     .hero img {
-      width: 300px;
-      max-width: 100%;
+      width: 100%;
+      max-width: 400px;
+      transition: transform 0.3s ease;
     }
 
-    .section {
-      padding: 60px 10%;
-      height: 100vh;
+    .hero img:hover {
+      transform: scale(1.05);
+    }
+
+    @media (max-width: 768px) {
+      .hero {
+        flex-direction: column;
+        text-align: center;
+        padding: 60px 20px;
+      }
+
+      .hero img {
+        margin-top: 30px;
+      }
+
+      .hero-text h1 {
+        font-size: 36px;
+      }
+
+      .hero-text p {
+        font-size: 18px;
+      }
+    }
+
+    section {
+      min-height: 100vh;
       padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
     }
 
-
-    .section-title {
-      text-align: center;
-      font-size: 32px;
-      margin-bottom: 40px;
+    .section-hero,
+    .section-fitur {
+      background-color: #f8f8f7;
+      padding: 60px 10%;
     }
 
     .grid {
@@ -89,8 +145,125 @@ function navigateToProduct(dropdown) {
       background: white;
       padding: 20px;
       border-radius: 20px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
       text-align: center;
+    }
+
+
+    .parent {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      grid-template-rows: repeat(10, minmax(20px, auto));
+      gap: 16px;
+      padding: 20px;
+    }
+
+    .div1 {
+      grid-column: span 3 / span 3;
+    }
+
+    .div3 {
+      grid-column: span 3 / span 3;
+      grid-row: span 5 / span 5;
+      grid-column-start: 1;
+      grid-row-start: 2;
+    }
+
+    .div4 {
+      grid-column: span 3 / span 3;
+      grid-column-start: 4;
+      grid-row-start: 1;
+    }
+
+    .div5 {
+      grid-column: span 3 / span 3;
+      grid-row: span 5 / span 5;
+      grid-column-start: 4;
+      grid-row-start: 2;
+    }
+
+    .div6 {
+      grid-column: span 6 / span 6;
+      grid-row-start: 9;
+    }
+
+    .div7 {
+      grid-column: span 6 / span 6;
+      grid-row-start: 10;
+    }
+
+    .section-spesifikasi {
+      background-color: #fdfbfb;
+      padding: 40px;
+      color: #2F4156;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    .div1,
+    .div4,
+    .div6 {
+      background-color: #FFFFFF;
+      padding: 24px;
+      border-radius: 16px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    .div3,
+    .div5 {
+      grid-row: span 5 / span 5;
+      background-color: #C8D9E6;
+      padding: 24px;
+      border-radius: 16px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    .div7 {
+      grid-column: span 6;
+      text-align: center;
+      padding: 20px;
+      background-color: #567C8D;
+      color: #FFFFFF;
+      border-radius: 12px;
+    }
+
+    .div1 h1,
+    .div4 h1,
+    .div6 h1 {
+      color: #2F4156;
+      font-size: 32px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .table-table th {
+      background-color: #567C8D;
+      color: #FFFFFF;
+      font-weight: 600;
+      padding: 12px 10px;
+    }
+
+    .table-table td {
+      background-color: #FFFFFF;
+      color: #2F4156;
+      padding: 12px 10px;
+      border-bottom: 1px solid #C8D9E6;
+    }
+
+    .step,
+    .card {
+      background-color: #C8D9E6;
+      border-radius: 16px;
+      padding: 16px;
+      color: #2F4156;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      transition: transform 0.2s ease;
+    }
+
+    .step:hover,
+    .card:hover {
+      transform: translateY(-4px);
+      background-color: #567C8D;
+      color: #FFFFFF;
     }
 
     .workflow {
@@ -108,222 +281,269 @@ function navigateToProduct(dropdown) {
       text-align: center;
     }
 
-    .portfolio {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      align-items: center;
-      gap: 40px;
-      margin-top: 30px;
-    }
-
-    .portfolio img {
-      width: 200px;
-      height: auto;
-      border-radius: 12px;
-    }
-
-    /* .pricing {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 20px;
-    }
-
-    .price-card {
-      padding: 30px;
-      border-radius: 20px;
-      color: white;
-      text-align: center;
-      font-weight: bold;
-    }
-
-    .price1 { background: #ff6b6b; }
-    .price2 { background: #4dabf7; }
-    .price3 { background: #b197fc; }
-    .price4 { background: #ffa94d; } */
-
     .card p:last-child {
       font-size: 20px;
       color: #f5b301;
       margin-top: 10px;
     }
-     .aos-up {
-    opacity: 0;
-    transform: translateY(50px);
-    transition: all 1s ease;
-  }
-  .aos-up.aos-animate {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  .aos-down {
-    opacity: 0;
-    transform: translateY(-50px);
-    transition: all 1s ease;
-  }
-  .aos-down.aos-animate {
-    opacity: 1;
-    transform: translateY(0);
-  }
+
+    .footer-right {
+      text-align: right;
+    }
+
+    .footer-social {
+      display: flex;
+      justify-content: space-between;
+      align-items: start;
+      flex-wrap: wrap;
+    }
+
+    .social-column {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .social-column a {
+      color: white;
+      text-decoration: none;
+    }
+
+    .aos-up {
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 1s ease;
+    }
+
+    .aos-up.aos-animate {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .aos-down {
+      opacity: 0;
+      transform: translateY(-50px);
+      transition: all 1s ease;
+    }
+
+    .aos-down.aos-animate {
+      opacity: 1;
+      transform: translateY(0);
+    }
   </style>
 </head>
+
 <body>
-      <!-- Navbar -->
+  <!-- Navbar -->
   <nav class="navbar navbar-expand-lg">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">
         <img src="https://getbootstrap.com/docs/5.3/assets/brand/bootstrap-logo.svg" alt="Logo" width="30" height="24">
-        Bootstrap
+        AppleTalk
       </a>
       <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
-          <li class="nav-item"><a class="nav-link" href="Home.php">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="../home/Home.php">Home</a></li>
           <li class="nav-item"><a class="nav-link" href="Beranda.php">Produk</a></li>
           <li class="nav-item"><a class="nav-link" href="#">Blog</a></li>
-          <li class="nav-item"><a class="nav-link" href="#hal5">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="../home/Home.php#hal4">About</a></li>
         </ul>
         <ul class="navbar-nav ms-auto">
           <li class="nav-item">
-             <a class="nav-link" href="LoginAkun.php"><i class="bi bi-people-fill"></i></a>
+            <a class="nav-link" href="LoginAkun.php">Logout</a>
           </li>
         </ul>
       </div>
     </div>
   </nav>
 
-  <!-- Hero Section -->
-<section class="hero">
-  <div class="hero-text">
-  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-           <h1> NAMA MENU</h1>
-          </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" value="">iPhone</a></li>
-            <li><a class="dropdown-item" value="">Macbook</a></li>
-            <li><a class="dropdown-item" value="">iPad</a></li>
-            <li><a class="dropdown-item" value="">Apple Watch</a></li>
-            <li><a class="dropdown-item" value="">AirPods</a></li>
-            <li><a class="dropdown-item" value="">Apple TV</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
-          </ul>
-    <p>Harga</p>
-  </div>
-  <img src="https://via.placeholder.com/300x300?text=Rocket+Illustration" alt="Rocket Illustration">
-</section>
+  <div class="s4">
+    <!-- Hero Section -->
+    <section class="section-hero">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-md-6 hero-text">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <h1> Apple Watch Nike</h1>
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="se.php">Apple Watch SE (Generasi ke-2)</a></li>
+              <li><a class="dropdown-item" href="s10.php">Apple Watch Series 10</a></li>
+              <li><a class="dropdown-item" href="s9.php">Apple Watch Series 9</a></li>
+              <li><a class="dropdown-item" href="ultra.php">Apple Watch Ultra</a></li>
+              <li><a class="dropdown-item" href="s5.php">Apple Watch Series 5</a></li>
+              <li><a class="dropdown-item" href="ultra2.php">Apple Watch Ultra 2</a></li>
+              <li><a class="dropdown-item" href="nike.php">Apple Watch Nike</a></li>
+              <li><a class="dropdown-item" href="s4.php">Apple Watch Series 4</a></li>
+            </ul>
+            <p><b>Harga: </b>Mulai dari Rp 6.096.027</p>
+          </div>
+          <div class="col-md-6 text-center">
+            <img src="nike.png" alt="4" class="img-fluid">
+          </div>
+        </div>
+      </div>
+    </section>
 
-<!-- Spesifikasi -->
-<section class="section">
-  <h2 class="section-title">SPESIFIKASI</h2>
-  <div class="grid">
-    <div class="card"> blablabla</div>
-  </div>
-</section>
+    <!-- Spesifikasi -->
+    <section class="section-spesifikasi text-white" id="spesifikasi">
 
-<!-- Fitur -->
-<section class="section" style="background: linear-gradient(to bottom right, #fdfbfb, #e2ebf0);">
-  <h2 class="section-title">FITUR</h2>
-  <div class="workflow">
-    <div class="step">1. Data Collection</div>
-    <div class="step">2. Research</div>
-    <div class="step">3. Analysis</div>
-    <div class="step">4. Planning</div>
-    <div class="step">5. Tech Stack Decision</div>
-    <div class="step">6. UX/UI Design</div>
-    <div class="step">7. MVP Creation</div>
-    <div class="step">8. Programming</div>
-    <div class="step">9. Testing</div>
-    <div class="step">10. Deployment</div>
-  </div>
-</section>
+      <div class="parent">
+        <div class="div1 text-center">
+          <h1>SPESIFIKASI</h1>
+        </div>
+        <div class="div3">
+          <table class="table-table table-sm">
+            <tr>
+              <th>Bahan</th>
+              <td>Casing Alumunium(44mm dan 40 mm)</td>
+            </tr>
+            <tr>
+              <th>Layar</th>
+              <td>Retina LTPO OLED; layar kaca Ion-X</td>
+            </tr>
+            <tr>
+              <th>Chip</th>
+              <td>S4 SiP (prosesor dual-core 64-bit)</td>
+            </tr>
+            <tr>
+              <th>Sensor</th>
+              <td>Sensor jantung elektrik; sensor jantung optik; akselerometer(hingga 32 g-force); giroskop; sensor cahaya</td>
+            </tr>
+            <tr>
+              <th>Konektivitas</th>
+              <td>Wi-Fi; Bluetooth; GPS/GNSS; Altimeter barometrik</td>
+            </tr>
+            <tr>
+              <th>Daya & Baterai</th>
+              <td>18 Jam(penggunaan normal)</td>
+            </tr>
+            <tr>
+              <th>Ketahanan</th>
+              <td>Tahan hingga 50 meter</td>
+            </tr>
+          </table>
+        </div>
+        <div class="div4 text-center">
+          <h1>FITUR</h1>
+        </div>
+        <div class="div5">
+          <table class="table-table table-sm">
+            <tr>
+              <th>Kesehatan & Kebugaran</th>
+              <td>Pelacakan aktivitas; deteksi jatuh; pelacakan siklus menstruasi; aplikasi EKG; pemberitahuan detak jantung rendah dan tinggi; pemberitahuan ritme tidak teratur.</td>
+            </tr>
+            <tr>
+              <th>Keselamatan</th>
+              <td>SOS darurat dan deteksi jatuh.</td>
+            </tr>
+            <tr>
+              <th>Fitur Lingkungan</th>
+              <td>Casing aluminium 100% daur ulang; penggunaan bahan daur ulang lainnya.</td>
+            </tr>
+          </table>
+        </div>
+        <div class="div6 text-center">
+          <h1>KESIMPULAN</h1>
+        </div>
+        <div class="div7 text-center">
+          <p>Apple Watch SE (Generasi ke-2) menawarkan fitur-fitur esensial Apple Watch dengan harga yang lebih terjangkau, cocok untuk pengguna baru atau mereka yang menginginkan perangkat wearable fungsional tanpa fitur-fitur premium.</p>
+        </div>
+      </div>
 
-<!-- Kesimpula -->
-<section class="section">
-  <h2 class="section-title">Kesimpulan</h2>
-  <div class="portfolio">
-    <img src="https://via.placeholder.com/200x400?text=App+1" alt="App 1">
-    <img src="https://via.placeholder.com/200x400?text=App+2" alt="App 2">
-  </div>
-</section>
+    </section>
 
-<!-- buat apalah nanti
-<section class="section">
-  <h2 class="section-title">Pricing Plans</h2>
-  <div class="pricing">
-    <div class="price-card price1">Basic</div>
-    <div class="price-card price2">Standard</div>
-    <div class="price-card price3">Pro</div>
-    <div class="price-card price4">Enterprise</div>
-  </div>
-</section> -->
-
-<!-- Coment -->
-<section class="section" style="background: #f3f6fa;">
-  <h2 class="section-title">User Reviews</h2>
-  <div class="grid">
-    <div class="card">
+    <!-- Coment Section -->
+    <section class="section" style="background: #f3f6fa;">
+    <h2 class="section-title text-center">User Reviews</h2>
+    <div class="grid mb-4">
       <div class="card">
         <h4>Andi</h4>
         <p>"Aplikasi ini sangat membantu dan mudah digunakan. Desainnya juga menarik!"</p>
         <p>⭐⭐⭐⭐⭐</p>
       </div>
-    </div>
-    <div class="card">
       <div class="card">
         <h4>Sinta</h4>
         <p>"Fitur-fitur yang ditawarkan sangat lengkap untuk kebutuhan saya."</p>
         <p>⭐⭐⭐⭐</p>
       </div>
-    </div>
-    <div class="card">
       <div class="card">
         <h4>Budi</h4>
         <p>"Pengalaman saya cukup baik, walaupun masih ada sedikit bug."</p>
         <p>⭐⭐⭐</p>
       </div>
     </div>
-  </div>
-</section>
-  <!-- Footer -->
-  <footer class="bg-dark text-white text-center py-3">
-    <div class="container">
-      <p>&copy; 2023 Your Company. All rights reserved.</p>
-      <p>Follow us on:
-        <a href="#" class="text-white">Facebook</a>,
-        <a href="#" class="text-white">Twitter</a>,
-        <a href="#" class="text-white">Instagram</a>
-      </p>
-    </div>
-  </footer>
 
-  <!-- Script Bootstrap & AOS -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-  
-<script>
-  let lastScrollTop = 0;
-  window.addEventListener('scroll', function () {
-    let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
-    const sections = document.querySelectorAll('section');
-    sections.forEach(section => {
-      if (section.getBoundingClientRect().top < window.innerHeight && section.getBoundingClientRect().bottom > 0) {
-        if (currentScroll > lastScrollTop) {
-          section.classList.add('aos-up');
-          section.classList.remove('aos-down');
-        } else {
-          section.classList.add('aos-down');
-          section.classList.remove('aos-up');
-        }
-        section.classList.add('aos-animate');
-      } else {
-        section.classList.remove('aos-animate');
-      }
-    });
-    lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
-  }, false);
-</script>
+    <!-- Form Komentar -->
+    <div class="container">
+      <h4 class="text-center mb-3">Tinggalkan Komentar Anda</h4>
+      <form id="commentForm">
+        <div class="mb-3">
+          <label for="nama" class="form-label">Nama</label>
+          <input type="text" class="form-control" id="nama" required>
+        </div>
+        <div class="mb-3">
+          <label for="komentar" class="form-label">Komentar</label>
+          <textarea class="form-control" id="komentar" rows="3" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Kirim Komentar</button>
+      </form>
+    </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-3">
+      <div class="container footer-social">
+        <div>
+          <p>&copy; 2023 Your Company. All rights reserved.</p>
+        </div>
+        <div class="footer-right">
+          <p class="fw-bold mb-1">Follow us:</p>
+          <div class="d-flex gap-4">
+            <div class="social-column">
+              <span>Creator 1</span>
+              <a href="#"><i class="bi bi-instagram"></i> Instagram</a>
+              <a href="#"><i class="bi bi-github"></i> GitHub</a>
+            </div>
+            <div class="social-column">
+              <span>Creator 2</span>
+              <a href="#"><i class="bi bi-instagram"></i> Instagram</a>
+              <a href="#"><i class="bi bi-github"></i> GitHub</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Script Bootstrap & AOS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+
+    <script>
+      let lastScrollTop = 0;
+      window.addEventListener('scroll', function() {
+        let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+        const sections = document.querySelectorAll('section');
+        sections.forEach(section => {
+          if (section.getBoundingClientRect().top < window.innerHeight && section.getBoundingClientRect().bottom > 0) {
+            if (currentScroll > lastScrollTop) {
+              section.classList.add('aos-up');
+              section.classList.remove('aos-down');
+            } else {
+              section.classList.add('aos-down');
+              section.classList.remove('aos-up');
+            }
+            section.classList.add('aos-animate');
+          } else {
+            section.classList.remove('aos-animate');
+          }
+        });
+        lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+      }, false);
+    </script>
 </body>
+
 </html>
