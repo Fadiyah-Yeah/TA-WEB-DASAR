@@ -415,7 +415,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <li><a class="dropdown-item" href="max.php">AirPods Max</a></li>
                 <li><a class="dropdown-item" href="gen2.php">AirPods (Generasi Ke-2)</a></li>
                 <li><a class="dropdown-item" href="pro.php">AirPods Pro (Generasi Ke-2) dengan Casing Pengisian daya MagSafe(USB-c)</a></li>
-                <li><a class="dropdown-item" href="ap4.php">AirPods 4 dengan Peredam Kebisingan Aktif</a></li>
                 <li><a class="dropdown-item" href="gen3.php">AirPods (Generasi Ke-3) dengan Casing Pengisian Daya MagSafe</a></li>
               </ul>
             </div>
