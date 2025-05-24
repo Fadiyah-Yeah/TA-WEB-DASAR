@@ -266,7 +266,7 @@
   <nav class="navbar navbar-expand-lg">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">
-        <img src="LogoWeb.png" alt="Logo" width="30" height="24">
+        <img src="LogoWeb.png" alt="Logo" width="40" height="40">
         AppleTalk
       </a>
       <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
