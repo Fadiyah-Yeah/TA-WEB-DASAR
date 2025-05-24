@@ -385,7 +385,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 </ul>
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="LoginAkun.php">Logout</a>
+                        <a class="nav-link" href="../Logout.php">Logout</a>
                     </li>
                 </ul>
             </div>
