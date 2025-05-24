@@ -538,29 +538,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <?php while ($row = mysqli_fetch_assoc($query)) { ?>
   <div class="col-12 col-sm-6 col-md-4 col-lg-3">
     <div class="card p-3 shadow-sm h-100">
-      <h5 class="fw-bold"><?= htmlspecialchars($row["username"]) ?></h5>
-      <p class="mb-0"><?= nl2br(htmlspecialchars($row["komentar"])) ?></p>
+      <h5 class="fw-bold"><?= ($row["username"]) ?></h5>
+      <p class="mb-0"><?= nl2br(($row["komentar"])) ?></p>
     </div>
   </div>
   <?php } ?>
   </div>
   </div>
-
-
-
-
-  <?php
-        while ($row = mysqli_fetch_assoc($query)) {
-        ?>
-      <div class="card " style="width:max-content;">
-        <h4><?= $row["username"] ?></h4>
-        <p><?= $row["komentar"] ?></p>
-      </div>
-    </div>
-    <?php
-        }
-    ?>
-
+      
   <!-- Form Komentar -->
   <div class="container">
     <h4 class="text-center mb-3">Tinggalkan Komentar Anda</h4>
