@@ -407,11 +407,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
           <ul class="dropdown-menu" aria-labelledby="produkDropdown">
             <li><a class="dropdown-item" href="se.php">Apple Watch SE (Generasi ke-2)</a></li>
             <li><a class="dropdown-item" href="s10.php">Apple Watch Series 10</a></li>
-            <li><a class="dropdown-item" href="s9.php">Apple Watch Series 9</a></li>
             <li><a class="dropdown-item" href="ultra.php">Apple Watch Ultra</a></li>
             <li><a class="dropdown-item" href="s5.php">Apple Watch Series 5</a></li>
             <li><a class="dropdown-item" href="nike.php">Apple Watch Nike</a></li>
-            <li><a class="dropdown-item" href="s4.php">Apple Watch Series 4</a></li>
           </ul>
         </div>
         <p><b>Harga: </b>Mulai dari Rp 14.999.000</p>
@@ -502,8 +500,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <?php while ($row = mysqli_fetch_assoc($query)) { ?>
   <div class="col-12 col-sm-6 col-md-4 col-lg-3">
     <div class="card p-3 shadow-sm h-100">
-      <h5 class="fw-bold"><?= htmlspecialchars($row["username"]) ?></h5>
-      <p class="mb-0"><?= nl2br(htmlspecialchars($row["komentar"])) ?></p>
+      <h5 class="fw-bold"><?= ($row["username"]) ?></h5>
+      <p class="mb-0"><?= nl2br(($row["komentar"])) ?></p>
     </div>
   </div>
 <?php } ?>
