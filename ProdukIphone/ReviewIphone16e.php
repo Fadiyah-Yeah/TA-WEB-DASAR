@@ -162,7 +162,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         .section-hero,
         .section-fitur {
-            background-color: #f8f8f7;
+            background: linear-gradient(to top, #FFFFFF, #F5EFEB, #C8D9E6);
             padding: 60px 10%;
         }
 
@@ -478,7 +478,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <h1>KESIMPULAN</h1>
                 </div>
                 <div class="div7 text-center">
-                    <p>Apple Watch SE (Generasi ke-2) menawarkan fitur-fitur esensial Apple Watch dengan harga yang lebih terjangkau, cocok untuk pengguna baru atau mereka yang menginginkan perangkat wearable fungsional tanpa fitur-fitur premium.</p>
+                    <p>iPhone 16e merupakan pilihan terjangkau dengan performa andal. Ditenagai chip A17, layar 6,1 inci, dan kamera utama 12 MP, perangkat ini cocok untuk pengguna yang menginginkan iPhone dengan harga lebih ekonomis. Harga mulai dari Rp 12.499.000 untuk varian 128 GB.</p>
                 </div>
             </div>
 
@@ -495,28 +495,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <?php while ($row = mysqli_fetch_assoc($query)) { ?>
                         <div class="col-12 col-sm-6 col-md-4 col-lg-3">
                             <div class="card p-3 shadow-sm h-100">
-                                <h5 class="fw-bold"><?= htmlspecialchars($row["username"]) ?></h5>
-                                <p class="mb-0"><?= nl2br(htmlspecialchars($row["komentar"])) ?></p>
+                                <h5 class="fw-bold"><?= ($row["username"]) ?></h5>
+                                <p class="mb-0"><?= ($row["komentar"]) ?></p>
                             </div>
                         </div>
                     <?php } ?>
                 </div>
             </div>
-
-
-
-
-            <!-- <?php
-                    while ($row = mysqli_fetch_assoc($query)) {
-                    ?>
-      <div class="card " style="width:max-content;">
-        <h4><?= $row["username"] ?></h4>
-        <p><?= $row["komentar"] ?></p>
-      </div>
-    </div>
-    <?php
-                    }
-    ?> -->
 
             <!-- Form Komentar -->
             <div class="container">
