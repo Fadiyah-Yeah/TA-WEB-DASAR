@@ -17,8 +17,6 @@ if (isset($_POST["register"])) {
             echo "<script>alert('User berhasil ditambahkan');</script>";
             header("Location: LoginAkun.php");
             exit;
-        } else {
-            echo "<script>alert('User gagal ditambahkan');</script>";
         }
     }
 }
@@ -33,7 +31,7 @@ if (isset($_POST["register"])) {
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
     <style>
         body {
-            background: linear-gradient(to top, rgb(35, 53, 216), rgb(81, 119, 224), rgb(255, 255, 255));
+            background: linear-gradient(to top, #567C8D, #C8D9E6);
             height: 100vh;
             display: flex;
             align-items: center;
@@ -76,8 +74,8 @@ if (isset($_POST["register"])) {
     <div class="container-fluid d-flex justify-content-center">
         <div class="card shadow bg-body-tertiary d-flex flex-md-row flex-column card-custom">
             <div class="col-md-6 position-relative border-end">
-                <img src="LogoWeb.png" class="position-absolute" style="top: 20px; left: 20px; width: 100px; height: 100px;" alt="Logo" />
-                <img src="DesainLogin.jpeg" class="register-image" alt="Register" />
+                <img src="image/LogoWeb.png" class="position-absolute" style="top: 20px; left: 20px; width: 100px; height: 100px;" alt="Logo" />
+                <img src="image/DesainRegister.jpeg" class="register-image" alt="Register" />
             </div>
 
             <form action="" method="POST" class="col-md-6 form-section">
