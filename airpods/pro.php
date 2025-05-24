@@ -545,39 +545,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </section>
 
     <?php
-    // $query = mysqli_query($conn, "SELECT username, komentar FROM coment WHERE produk = '$produk' ORDER BY id DESC");
-    // 
+    $query = mysqli_query($conn, "SELECT username, komentar FROM coment WHERE produk = '$produk' ORDER BY id DESC");
+    
     ?>
     <!-- Coment Section -->
-    <!-- <section class="section" style="background: #f3f6fa;">
+    <section class="section" style="background: #f3f6fa;">
     <h2 class="section-title text-center mb-4">User Reviews</h2>
     <div class="container">
   <div class="row justify-content-center g-4 mb-4">
     <?php while ($row = mysqli_fetch_assoc($query)) { ?>
   <div class="col-12 col-sm-6 col-md-4 col-lg-3">
     <div class="card p-3 shadow-sm h-100">
-      <h5 class="fw-bold"><?= htmlspecialchars($row["username"]) ?></h5>
-      <p class="mb-0"><?= nl2br(htmlspecialchars($row["komentar"])) ?></p>
+      <h5 class="fw-bold"><?= ($row["username"]) ?></h5>
+      <p class="mb-0"><?= nl2br(($row["komentar"])) ?></p>
     </div>
-  </div> -->
+  </div>
   <?php } ?>
   </div>
   </div>
-
-
-
-
-  <!-- <?php
-        while ($row = mysqli_fetch_assoc($query)) {
-        ?>
-      <div class="card " style="width:max-content;">
-        <h4><?= $row["username"] ?></h4>
-        <p><?= $row["komentar"] ?></p>
-      </div>
-    </div>
-    <?php
-        }
-    ?> -->
 
   <!-- Form Komentar -->
   <div class="container">
