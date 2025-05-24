@@ -1,31 +1,31 @@
 <?php
-// include "KoneksiDatabase.php";
-// session_start();
-// //!true = false;
-// //!false = true;
-// if (!isset($_SESSION["login"])) {
-//   header("Location: LoginAkun.php");
-//   exit;
-// }
-// // Ambil username dari LoginAkun
-// $username = $_SESSION['username'];
+include "KoneksiDatabase.php";
+session_start();
+//!true = false;
+//!false = true;
+if (!isset($_SESSION["login"])) {
+  header("Location: LoginAkun.php");
+  exit;
+}
+// Ambil username dari LoginAkun
+$username = $_SESSION['username'];
 
-// // Di deklarasi tiap page sesuai produk
-// $produk = "Apple Watch Nike";
+// Di deklarasi tiap page sesuai produk
+$produk = "Apple Watch Nike";
 
-// if ($_SERVER["REQUEST_METHOD"] == "POST") {
-//     $komentar = $_POST["komentar"];
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $komentar = $_POST["komentar"];
 
-//     if (!empty($komentar)) {
-//         $komentar = mysqli_real_escape_string($conn, $komentar);
+    if (!empty($komentar)) {
+        $komentar = mysqli_real_escape_string($conn, $komentar);
 
-//         $query = "INSERT INTO coment (username, produk, komentar) VALUES ('$username', '$produk', '$komentar')";
-//         if(mysqli_query($conn, $query)){
-//             echo "<script>alert('Komentar berhasil ditambahkan');</script>";
-//             header("Location: ReviewProduk.php");
-//         }
-//     }
-// }
+        $query = "INSERT INTO coment (username, produk, komentar) VALUES ('$username', '$produk', '$komentar')";
+        if(mysqli_query($conn, $query)){
+            echo "<script>alert('Komentar berhasil ditambahkan');</script>";
+            header("Location: ReviewProduk.php");
+        }
+    }
+}
 ?>
 
 
@@ -472,10 +472,10 @@
         </section>
 
         <?php
-        // $query = mysqli_query($conn, "SELECT username, komentar FROM coment WHERE produk = '$produk' ORDER BY id DESC");
+        $query = mysqli_query($conn, "SELECT username, komentar FROM coment WHERE produk = '$produk' ORDER BY id DESC");
         ?>
         <!-- Coment Section -->
-        <!-- <section class="section" style="background: #f3f6fa;">
+        <section class="section" style="background: #f3f6fa;">
     <h2 class="section-title text-center mb-4">User Reviews</h2>
     <div class="container">
   <div class="row justify-content-center g-4 mb-4">
@@ -485,12 +485,12 @@
       <h5 class="fw-bold"><?= htmlspecialchars($row["username"]) ?></h5>
       <p class="mb-0"><?= nl2br(htmlspecialchars($row["komentar"])) ?></p>
     </div>
-  </div> -->
+  </div>
     <?php } ?>
     </div>
     </div>
 
-    <!-- <?php
+    <?php
             while ($row = mysqli_fetch_assoc($query)) {
             ?>
       <div class="card " style="width:max-content;">
@@ -500,7 +500,7 @@
     </div>
     <?php
             }
-    ?> -->
+    ?>
 
     <!-- Form Komentar -->
     <div class="container">
