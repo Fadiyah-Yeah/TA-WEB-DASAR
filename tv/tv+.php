@@ -490,18 +490,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </div>
     </div>
 
-    <?php
-            while ($row = mysqli_fetch_assoc($query)) {
-            ?>
-      <div class="card " style="width:max-content;">
-        <h4><?= $row["username"] ?></h4>
-        <p><?= $row["komentar"] ?></p>
-      </div>
-    </div>
-    <?php
-            }
-    ?>
-
     <!-- Form Komentar -->
     <div class="container">
         <h4 class="text-center mb-3">Tinggalkan Komentar Anda</h4>
